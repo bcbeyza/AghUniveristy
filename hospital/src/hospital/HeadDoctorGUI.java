@@ -12,7 +12,7 @@ import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 
-import org.apache.log4j.*;
+
 import Helper.Helper;
 import Helper.Item;
 import Model.Clinic;
@@ -25,6 +25,8 @@ import javax.swing.JMenuItem;
 import java.awt.Font;
 import java.awt.Point;
 import java.sql.SQLException;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
 
 import javax.swing.JButton;
 import javax.swing.JTabbedPane;
@@ -57,7 +59,7 @@ public class HeadDoctorGUI extends JFrame {
 	private Object[] clinicData = null;
 	private JPopupMenu clinicMenu;
 	private JTable table_worker;
-	private static Logger logger = LogManager.getLogger(HeadDoctorGUI.class.getName());
+
 
 	/**
 	 * 
@@ -68,7 +70,7 @@ public class HeadDoctorGUI extends JFrame {
 			public void run() {
 				try {
 					HeadDoctorGUI frame = new HeadDoctorGUI(headDoctor);
-					logger.info("HEAD DOCTOR GUI PAGE");
+					
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -154,7 +156,7 @@ public class HeadDoctorGUI extends JFrame {
 
 				LoginGUI login = new LoginGUI();
 				login.setVisible(true);
-				logger.info("HEAD DOCTOR GUI PAGE LOG OUT");
+			
 				dispose();
 
 			}
@@ -440,7 +442,7 @@ public class HeadDoctorGUI extends JFrame {
 						|| fld_Tcno.getText().length() == 0) {
 
 					Helper.showMsg("fill");
-					logger.error("ERROR!");
+					
 				} else {
 
 					try {
@@ -448,7 +450,7 @@ public class HeadDoctorGUI extends JFrame {
 								fld_dName.getText());
 						if (control) {
 							Helper.showMsg("success");
-							logger.info("SUCESSFULL");
+						
 							fld_dName.setText(null);
 							fld_Tcno.setText(null);
 							fld_dPass.setText(null);
@@ -481,7 +483,7 @@ public class HeadDoctorGUI extends JFrame {
 							boolean control = headDoctor.deleteDoctor(selectID);
 							if (control) {
 								Helper.showMsg("success");
-								logger.info("success");
+								
 								fld_doctorID.setText(null);
 								updateDoctorModel();
 							}

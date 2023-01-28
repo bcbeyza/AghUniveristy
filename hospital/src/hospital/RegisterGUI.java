@@ -6,8 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+
 
 import Helper.Helper;
 import Model.Patient;
@@ -30,7 +29,7 @@ public class RegisterGUI extends JFrame {
 	private JTextField fld_tcno;
 	private JPasswordField fld_pass;
 	private Patient patient=new Patient();
-	private static Logger logger = LogManager.getLogger(RegisterGUI.class.getName());
+
 
 	/**
 	 * Launch the application.
@@ -100,14 +99,14 @@ public class RegisterGUI extends JFrame {
 			if(fld_tcno.getText().length()==0 || fld_pass.getText().length()==0 || fld_name.getText().length()==0) {
 				
 				Helper.showMsg("fill");
-				logger.error("Please fill up the informations");
+				
 				
 			}else {
 				try {
 					boolean control=patient.register(fld_tcno.getText(),fld_pass.getText(), fld_name.getText());
 					if(control) {
 						Helper.showMsg("success");
-						logger.info("SUCCESSFULL REGISTER");
+						
 						LoginGUI login=new LoginGUI();
 						login.setVisible(true);
 						dispose();
@@ -115,7 +114,7 @@ public class RegisterGUI extends JFrame {
 					}else {
 						
 						Helper.showMsg("error");
-						logger.error("ERROR!");
+					
 					}
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
@@ -136,7 +135,7 @@ public class RegisterGUI extends JFrame {
 				
 				LoginGUI login=new LoginGUI();
 				login.setVisible(true);
-				logger.info("RETURN BACK");
+				
 				dispose();
 			}
 		});

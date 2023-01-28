@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import org.apache.log4j.*;
+
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -39,7 +39,7 @@ public class LoginGUI extends JFrame {
 	private JTextField fld_doctorTc;
 	private JPasswordField fld_doctorPass;
 	private DBConnection conn = new DBConnection();
-	private static Logger logger = LogManager.getLogger(LoginGUI.class.getName());
+
 	private JPasswordField fld_patientPass;
 
 	/**
@@ -51,13 +51,12 @@ public class LoginGUI extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					BasicConfigurator.configure();
+					//BasicConfigurator.configure();
 					LoginGUI frame = new LoginGUI();
-					logger.info("LOGIN GUI PAGE");
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
-					logger.error("Can not connect the URL!");
+					
 				}
 			}
 		});
@@ -132,7 +131,7 @@ public class LoginGUI extends JFrame {
 
 				if (fld_hastaTc.getText().length() == 0 || fld_patientPass.getText().length() == 0) {
 
-					logger.error("Please fill up the informations...");
+				
 					Helper.showMsg("fill");
 					
 				} else {
@@ -211,7 +210,7 @@ public class LoginGUI extends JFrame {
 				if (fld_doctorTc.getText().length() == 0 || fld_doctorPass.getText().length() == 0) {
 
 					
-					logger.error("Please fill up the informations...");
+					
 					Helper.showMsg("fill");
 					
 				} else {
